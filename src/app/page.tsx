@@ -204,7 +204,7 @@ function ExperiencePanel() {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 />
               )}
-              <span className="text-[9px] font-mono uppercase tracking-wider block mb-0.5"
+              <span className="text-[12px] font-mono uppercase tracking-wider block mb-0.5"
                 style={{ color: i === selected ? accent : "rgba(255,255,255,0.25)" }}>
                 {e.period}
               </span>
@@ -232,8 +232,8 @@ function ExperiencePanel() {
                 <p className="text-[13px] md:text-[14px] text-white/50">{exp.role}</p>
               </div>
               <div className="md:text-right flex md:block items-center gap-2">
-                <span className="text-[9px] md:text-[10px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">{exp.type}</span>
-                <span className="text-[8px] md:text-[9px] font-mono text-white/15 uppercase tracking-wider md:mt-2 md:block">{exp.location}</span>
+                <span className="text-[12px] md:text-[12px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">{exp.type}</span>
+                <span className="text-[13px] md:text-[12px] font-mono text-white/15 uppercase tracking-wider md:mt-2 md:block">{exp.location}</span>
               </div>
             </div>
 
@@ -246,7 +246,7 @@ function ExperiencePanel() {
                   transition={{ delay: j * 0.08, duration: 0.3 }}
                   className="flex gap-3 text-[13px] text-white/40 leading-relaxed"
                 >
-                  <span className="text-[8px] mt-[7px] flex-shrink-0" style={{ color: accent }}>●</span>
+                  <span className="text-[13px] mt-[7px] flex-shrink-0" style={{ color: accent }}>●</span>
                   {b}
                 </motion.li>
               ))}
@@ -254,8 +254,8 @@ function ExperiencePanel() {
 
             {/* Stats row */}
             <div className="flex items-center gap-6 mt-8 pt-5 border-t border-white/[0.04]">
-              <span className="text-[11px] font-mono uppercase tracking-wider" style={{ color: accent }}>{exp.period}</span>
-              <span className="text-[10px] text-white/20">{exp.location}</span>
+              <span className="text-[13px] font-mono uppercase tracking-wider" style={{ color: accent }}>{exp.period}</span>
+              <span className="text-[12px] text-white/20">{exp.location}</span>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -301,9 +301,9 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
           <div className="flex items-center justify-between mt-3">
             <div>
               <span className="text-[14px] font-bold uppercase tracking-wide">{featuredVideo.title}</span>
-              <span className="text-[10px] font-mono uppercase tracking-wider ml-3" style={{ color: accent }}>{featuredVideo.tag}</span>
+              <span className="text-[12px] font-mono uppercase tracking-wider ml-3" style={{ color: accent }}>{featuredVideo.tag}</span>
             </div>
-            <span className="text-[9px] font-mono text-white/20">
+            <span className="text-[12px] font-mono text-white/20">
               {videos.findIndex(v => v.id === featuredVideo.id) + 1} / {videos.slice(0, 20).length}
             </span>
           </div>
@@ -338,10 +338,10 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
                 </div>
               </div>
               <div className="min-w-0 flex-1">
-                <span className={`text-[11px] font-bold uppercase tracking-wide block truncate ${vid.id === featuredVideo.id ? "text-white" : "text-white/30"}`}>{vid.title}</span>
-                <span className="text-[8px] font-mono uppercase tracking-wider" style={{ color: vid.id === featuredVideo.id ? accent : "rgba(255,255,255,0.15)" }}>{vid.tag}</span>
+                <span className={`text-[13px] font-bold uppercase tracking-wide block truncate ${vid.id === featuredVideo.id ? "text-white" : "text-white/30"}`}>{vid.title}</span>
+                <span className="text-[13px] font-mono uppercase tracking-wider" style={{ color: vid.id === featuredVideo.id ? accent : "rgba(255,255,255,0.15)" }}>{vid.tag}</span>
               </div>
-              <span className="text-[9px] font-mono text-white/10 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-[12px] font-mono text-white/10 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
             </button>
           ))}
         </div>
@@ -460,7 +460,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <span className="text-[9px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
+        <span className="text-[12px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
       </div>
 
       {/* Mobile bottom bar */}
@@ -477,7 +477,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <span className="text-[9px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
+        <span className="text-[12px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
       </div>
 
       {/* ═══ MENU PANEL ═══ */}
@@ -491,12 +491,12 @@ export default function Home() {
               transition={{ duration: 0.4, ease }}
               className="fixed left-0 md:left-[56px] top-0 bottom-0 w-full md:w-[260px] z-[96] bg-[#0a0a0c]/95 md:bg-black/70 md:backdrop-blur-xl md:border-r border-white/[0.04] flex flex-col justify-center px-8"
             >
-              <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] mb-8">Index</span>
+              <span className="text-[12px] font-mono text-white/20 uppercase tracking-[0.3em] mb-8">Index</span>
               {sections.map((name, i) => (
                 <button key={name} onClick={() => go(i)}
                   className={`flex items-center gap-4 py-3.5 text-left w-full border-b border-white/[0.04] transition-all ${i === panel ? "opacity-100" : "opacity-30 hover:opacity-60"
                     }`}>
-                  <span className="text-[10px] font-mono w-5" style={{ color: i === panel ? accent : "rgba(255,255,255,0.3)" }}>
+                  <span className="text-[12px] font-mono w-5" style={{ color: i === panel ? accent : "rgba(255,255,255,0.3)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[13px] font-bold uppercase tracking-wider text-white">{name}</span>
@@ -581,7 +581,7 @@ export default function Home() {
                     ))}
                     <div className="flex flex-wrap gap-2 pt-1">
                       {["Art Direction", "Motion Design", "Branding", "3D Animation", "Automation"].map((s) => (
-                        <span key={s} className="px-2.5 py-1 text-[9px] font-mono uppercase tracking-wider border border-white/[0.08] text-white/35">{s}</span>
+                        <span key={s} className="px-2.5 py-1 text-[12px] font-mono uppercase tracking-wider border border-white/[0.08] text-white/35">{s}</span>
                       ))}
                     </div>
                   </div>
@@ -604,7 +604,7 @@ export default function Home() {
                   <div>
                     {["Understand", "Sketch", "Design", "Adapt", "Animate", "Systemize", "Deliver"].map((step, i) => (
                       <div key={step} className="flex items-center gap-4 py-3 border-b border-white/[0.06] group hover:bg-white/[0.01] px-2 -mx-2 transition-colors">
-                        <span className="text-[11px] font-mono text-white/15 w-5 group-hover:text-[#00C853] transition-colors">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[13px] font-mono text-white/15 w-5 group-hover:text-[#00C853] transition-colors">{String(i + 1).padStart(2, "0")}</span>
                         <span className="text-[16px] font-bold uppercase tracking-wide">{step}</span>
                       </div>
                     ))}
@@ -623,11 +623,11 @@ export default function Home() {
                   {systems.map((sys, i) => (
                     <div key={sys.title} className="module-card">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[9px] font-mono text-white/20">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="text-[8px] font-mono uppercase tracking-wider text-white/20 px-1.5 py-0.5 bg-white/[0.06]">{sys.stat}</span>
+                        <span className="text-[12px] font-mono text-white/20">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[13px] font-mono uppercase tracking-wider text-white/20 px-1.5 py-0.5 bg-white/[0.06]">{sys.stat}</span>
                       </div>
                       <h3 className="text-[13px] font-bold uppercase tracking-wide mb-1">{sys.title}</h3>
-                      <p className="text-[11px] text-white/30 leading-relaxed">{sys.desc}</p>
+                      <p className="text-[13px] text-white/30 leading-relaxed">{sys.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -662,7 +662,7 @@ export default function Home() {
                   <a href="https://www.linkedin.com/in/xien/" target="_blank" rel="noopener noreferrer" className="btn-outline">LinkedIn</a>
                   <a href="/cv.pdf" download className="btn-outline">Download CV</a>
                 </div>
-                <p className="mt-10 text-[9px] font-mono text-white/15 uppercase tracking-wider">&copy; 2026 Abdelhamid Zainhom</p>
+                <p className="mt-10 text-[12px] font-mono text-white/15 uppercase tracking-wider">&copy; 2026 Abdelhamid Zainhom</p>
               </div>
             )}
           </motion.div>
