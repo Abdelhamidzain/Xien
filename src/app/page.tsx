@@ -644,15 +644,15 @@ export default function Home() {
                 <h2 className="heading-hero mb-8">Let&apos;s build<br />something<br /><span style={{ color: accent }}>remarkable</span>.</h2>
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-5">
-                    <span className="label-mono w-16">Email</span>
+                    <span className="label-mono w-28 flex-shrink-0">Email</span>
                     <a href="mailto:Abdelhamid.zainhom@gmail.com" className="text-[16px] text-white/60 hover:text-[#00C853] transition-colors">Abdelhamid.zainhom@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-5">
-                    <span className="label-mono w-16">Phone</span>
+                    <span className="label-mono w-28 flex-shrink-0">Phone</span>
                     <a href="tel:0563787025" className="text-[16px] text-white/60 hover:text-[#00C853] transition-colors">0563787025</a>
                   </div>
                   <div className="flex items-center gap-5">
-                    <span className="label-mono w-16">Location</span>
+                    <span className="label-mono w-28 flex-shrink-0">Location</span>
                     <span className="text-[16px] text-white/60">Riyadh — Saudi Arabia</span>
                   </div>
                 </div>
