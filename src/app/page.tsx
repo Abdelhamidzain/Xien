@@ -385,8 +385,10 @@ export default function Home() {
         if (isHorizontal && Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
       }
       e.preventDefault();
+      const absDelta = Math.abs(e.deltaY);
+      if (absDelta < 15) return;
       const now = Date.now();
-      if (now - lastScrollTime.current < 400) return;
+      if (now - lastScrollTime.current < 600) return;
       lastScrollTime.current = now;
       if (e.deltaY > 0) next(); else if (e.deltaY < 0) prev();
     };
@@ -400,7 +402,7 @@ export default function Home() {
     const handleTouchEnd = (e: TouchEvent) => {
       const dX = touchStartX - e.changedTouches[0].clientX;
       const dY = touchStartY - e.changedTouches[0].clientY;
-      if (Math.max(Math.abs(dX), Math.abs(dY)) < 40) return;
+      if (Math.max(Math.abs(dX), Math.abs(dY)) < 60) return;
       if (Math.abs(dX) > Math.abs(dY)) { dX > 0 ? next() : prev(); }
       else { dY > 0 ? next() : prev(); }
     };
@@ -419,7 +421,7 @@ export default function Home() {
   const variants = panelVariants;
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-[#0a0a0c] relative">
+    <div className="h-dvh w-full overflow-hidden bg-[#0a0a0c] relative">
 
 
       {/* ═══ BG — Full on desktop, lightweight on mobile ═══ */}
@@ -522,7 +524,7 @@ export default function Home() {
       >
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div key={panel} custom={dir} variants={variants} initial="enter" animate="center" exit="exit"
-            transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }} className="absolute inset-0 flex items-center overflow-hidden">
+            transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }} className="absolute inset-0 flex items-center overflow-x-hidden overflow-y-auto" data-scrollable>
 
             {/* 01 MANIFESTO */}
             {panel === 0 && (
