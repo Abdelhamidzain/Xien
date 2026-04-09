@@ -68,7 +68,8 @@ body {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(32px, 5vw, 100px);
+  padding-left: clamp(32px, 5vw, 100px);
+  padding-right: clamp(32px, 5vw, 100px);
 }
 
 .overline {
@@ -247,7 +248,7 @@ body {
   :root { --sidebar-w: 0px; }
   .heading-hero { font-size: clamp(1.8rem, min(10vw, 5.5vh), 3.5rem); }
   .heading-lg { font-size: clamp(1.3rem, 6vw, 2rem); }
-  .section-inner { padding: 0 20px; }
+  .section-inner { padding-left: 20px; padding-right: 20px; }
   .overline { font-size: 12px; }
   .label-mono { font-size: 13px; }
   .body-text { font-size: 14px; }
