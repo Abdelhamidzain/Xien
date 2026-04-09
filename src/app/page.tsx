@@ -137,12 +137,28 @@ const videos = [
 
 const systems = [
   {
+    title: "60–70% Faster Production",
+    impact: "60–70%",
+    impactLabel: "time saved per campaign",
+    before: "Every campaign restarts from scratch. Your team manually rebuilds the same assets in different sizes, formats, and languages. A full production week for what should take a day. Senior designers spend 80% of their time on mechanical tasks instead of creative work. The bottleneck is never the idea — it's the production.",
+    after: "One source file generates every variant your team needs — automatically. A campaign that took a full production week now ships in one to two days. Your designers reclaim their time for creative thinking, strategy, and innovation. Production becomes the fastest part of the pipeline instead of the slowest. The system pays for itself in the first sprint.",
+    for: "Marketing & Brand Teams",
+  },
+  {
     title: "Platform-Ready Templates",
     impact: "50+",
     impactLabel: "platform formats",
     before: "Every new campaign means guessing dimensions, safe zones, and platform specs. Your designer Googles \"Instagram Reels size\" for the hundredth time. Ads get rejected because text lands outside the safe area. Videos get cropped awkwardly. Every platform — Meta, TikTok, Google Display, LinkedIn, Snapchat, X — has different rules, and your team re-learns them every single time.",
     after: "A complete template library covering every major platform — social media posts, stories, reels, display ads, website banners, video formats — all pre-built with accurate safe zones, bleed areas, and platform-specific constraints baked in. Your team opens a template and starts designing immediately. No rejected ads, no cropped content, no wasted production cycles. Works for both static design and motion templates, so your video content ships just as fast as your graphics.",
     for: "Ads & Social Media Teams",
+  },
+  {
+    title: "1-Click Multi-Format Export",
+    impact: "1-click",
+    impactLabel: "all formats delivered",
+    before: "Social needs square and vertical. The website needs 16:9. Display ads need twelve different sizes. The presentation needs light backgrounds. Your team manually exports, resizes, renames, and reformats for every single channel — every single campaign. Hours of tedious work that adds zero creative value.",
+    after: "Every deliverable — social, web, display, presentation, video — generated from a single source of truth in one click. Every format pre-configured with the correct specs, naming conventions, and quality settings. Your digital and social teams receive final, publish-ready assets instead of raw files they need to process. This alone saves hours of back-and-forth every single campaign cycle and eliminates the human errors that come with manual resizing.",
+    for: "Digital & Social Teams",
   },
   {
     title: "AI Language Engine",
