@@ -136,12 +136,42 @@ const videos = [
 ];
 
 const systems = [
-  { title: "Brand System Engine", stat: "24+ artboards", desc: "Grid, logo, legal, palette — one script controls all." },
-  { title: "CTA Builder", stat: "5 modes", desc: "Arabic centering, smallest-font detection." },
-  { title: "Design → Motion Bridge", stat: "JSON", desc: "Structured data from Illustrator to AE." },
-  { title: "Motion Translator", stat: "12 comps", desc: "Brand logic rebuilds in AE programmatically." },
-  { title: "Batch Output", stat: "1-click", desc: "PNG at 1x/2x/3x with auto-naming." },
-  { title: "Folder Architecture", stat: "30+ dirs", desc: "ZIP-ready hierarchy from project metadata." },
+  {
+    title: "Brand Production at Scale",
+    impact: "60–70% faster",
+    value: "Your team stops rebuilding the same assets manually. One system generates every format, size, and language variant — so campaigns launch in days, not weeks.",
+    for: "Marketing & Brand Teams",
+  },
+  {
+    title: "Zero-Error Handoff",
+    impact: "0 revision loops",
+    value: "Design-to-motion pipeline eliminates the back-and-forth. What gets designed is exactly what gets animated — no misinterpretation, no lost details, no wasted cycles.",
+    for: "Creative Operations",
+  },
+  {
+    title: "Instant Multi-Format Delivery",
+    impact: "1-click export",
+    value: "Every deliverable — social, web, print, presentation — generated from a single source of truth. Your team receives final assets ready to publish, not files to resize.",
+    for: "Digital & Social Teams",
+  },
+  {
+    title: "Brand Consistency Engine",
+    impact: "100% on-brand",
+    value: "Colors, spacing, typography, and legal elements are enforced programmatically. No matter who touches the project, the output is always brand-compliant.",
+    for: "Brand Governance",
+  },
+  {
+    title: "Scalable Project Architecture",
+    impact: "30+ projects",
+    value: "Every project follows a standardized structure from day one. New team members onboard instantly, files are always findable, and nothing gets lost between departments.",
+    for: "Project Management",
+  },
+  {
+    title: "Bilingual Production System",
+    impact: "AR + EN ready",
+    value: "Arabic and English layouts generated simultaneously with correct alignment, font handling, and reading direction — no separate production tracks needed.",
+    for: "Regional Campaigns",
+  },
 ];
 
 const sections = ["Manifesto", "About", "Experience", "Process", "Systems", "Works", "Contact"];
@@ -632,19 +662,21 @@ export default function Home() {
 
             {/* 05 SYSTEMS */}
             {panel === 4 && (
-              <div className="section-inner">
-                <span className="overline block mb-3">Automation</span>
-                <h2 className="heading-lg mb-2">I build <span style={{ color: accent }}>systems</span>.</h2>
-                <p className="body-text mb-6">Scripting within Adobe apps — efficiency boost up to 60–70%.</p>
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="section-inner flex flex-col justify-center h-full">
+                <div className="mb-6">
+                  <span className="overline block mb-2">What You Get</span>
+                  <h2 className="heading-lg mb-3">I don&apos;t just design —<br />I build <span style={{ color: accent }}>systems</span> that<br />save your team time.</h2>
+                  <p className="body-text">Every system I build is designed to remove bottlenecks, eliminate repetitive work, and let your team focus on strategy — not production.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" data-scrollable>
                   {systems.map((sys, i) => (
-                    <div key={sys.title} className="module-card">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-[13px] md:text-[16px] font-mono text-white/20">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider text-white/20 px-1.5 py-0.5 bg-white/[0.06]">{sys.stat}</span>
+                    <div key={sys.title} className="module-card p-4 md:p-5">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[11px] md:text-[13px] font-mono uppercase tracking-wider px-2 py-0.5 rounded" style={{ color: accent, background: "rgba(0,200,83,0.08)" }}>{sys.for}</span>
+                        <span className="text-[13px] md:text-[16px] font-bold" style={{ color: accent }}>{sys.impact}</span>
                       </div>
-                      <h3 className="text-[13px] md:text-[16px] font-bold uppercase tracking-wide mb-1">{sys.title}</h3>
-                      <p className="text-[13px] md:text-[16px] text-white/30 leading-relaxed">{sys.desc}</p>
+                      <h3 className="text-[14px] md:text-[17px] font-bold uppercase tracking-wide mb-2">{sys.title}</h3>
+                      <p className="text-[13px] md:text-[15px] text-white/40 leading-relaxed">{sys.value}</p>
                     </div>
                   ))}
                 </div>
