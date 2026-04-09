@@ -107,7 +107,7 @@ body {
 
 .label-mono {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -204,7 +204,7 @@ body {
   padding: 12px 28px;
   background: var(--accent);
   color: #0a0a0c;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -226,7 +226,7 @@ body {
   padding: 12px 28px;
   background: transparent;
   color: var(--text);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
