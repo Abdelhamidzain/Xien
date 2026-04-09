@@ -530,7 +530,7 @@ export default function Home() {
             {panel === 0 && (
               <div className="w-full h-full flex flex-col md:flex-row">
                 {/* Mobile: photo at top */}
-                <div className="md:hidden w-full h-[35%] relative">
+                <div className="md:hidden w-full h-[22%] relative">
                   <img src="/photo.png" alt="Abdelhamid Zainhom" className="absolute inset-0 w-full h-full object-cover object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-transparent" />
                 </div>
