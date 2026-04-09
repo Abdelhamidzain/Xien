@@ -229,11 +229,11 @@ function ExperiencePanel() {
             <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
               <div>
                 <h3 className="text-[18px] md:text-[22px] font-black uppercase tracking-wide mb-1">{exp.company}</h3>
-                <p className="text-[16px] md:text-[16px] text-white/50">{exp.role}</p>
+                <p className="text-[16px] text-white/50">{exp.role}</p>
               </div>
               <div className="md:text-right flex md:block items-center gap-2">
-                <span className="text-[16px] md:text-[16px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">{exp.type}</span>
-                <span className="text-[16px] md:text-[16px] font-mono text-white/15 uppercase tracking-wider md:mt-2 md:block">{exp.location}</span>
+                <span className="text-[16px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">{exp.type}</span>
+                <span className="text-[16px] font-mono text-white/15 uppercase tracking-wider md:mt-2 md:block">{exp.location}</span>
               </div>
             </div>
 
@@ -246,7 +246,7 @@ function ExperiencePanel() {
                   transition={{ delay: j * 0.08, duration: 0.3 }}
                   className="flex gap-3 text-[16px] text-white/40 leading-relaxed"
                 >
-                  <span className="text-[16px] mt-[7px] flex-shrink-0" style={{ color: accent }}>●</span>
+                  <span className="text-[8px] mt-[7px] flex-shrink-0" style={{ color: accent }}>●</span>
                   {b}
                 </motion.li>
               ))}
@@ -496,7 +496,7 @@ export default function Home() {
                 <button key={name} onClick={() => go(i)}
                   className={`flex items-center gap-4 py-3.5 text-left w-full border-b border-white/[0.04] transition-all ${i === panel ? "opacity-100" : "opacity-30 hover:opacity-60"
                     }`}>
-                  <span className="text-[16px] font-mono w-5" style={{ color: i === panel ? accent : "rgba(255,255,255,0.3)" }}>
+                  <span className="text-[16px] font-mono w-8" style={{ color: i === panel ? accent : "rgba(255,255,255,0.3)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[16px] font-bold uppercase tracking-wider text-white">{name}</span>
