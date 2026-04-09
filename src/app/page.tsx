@@ -8,6 +8,44 @@ import { EtheralShadow } from "@/components/ui/etheral-shadow";
 const ease: Easing = [0.16, 1, 0.3, 1];
 const accent = "#00C853";
 
+/* ═══ HORIZONTAL SCROLL HINT ═══ */
+function HScrollHint({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const check = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    check();
+    el.addEventListener("scroll", check, { passive: true });
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => { el.removeEventListener("scroll", check); ro.disconnect(); };
+  }, [check]);
+
+  return (
+    <div className={`relative ${className}`}>
+      {/* Left fade */}
+      <div className={`absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0a0a0c] to-transparent z-10 pointer-events-none transition-opacity duration-300 md:hidden ${canScrollLeft ? "opacity-100" : "opacity-0"}`} />
+      {/* Right fade + arrow */}
+      <div className={`absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#0a0a0c] to-transparent z-10 pointer-events-none transition-opacity duration-300 md:hidden flex items-center justify-end pr-1 ${canScrollRight ? "opacity-100" : "opacity-0"}`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-pulse"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <div ref={ref} className="flex gap-1 overflow-x-auto pb-2 md:pb-0 md:flex-col md:overflow-x-visible scrollbar-hide" data-scrollable>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 /* ═══ DATA ═══ */
 
 const experience = [
@@ -244,7 +282,7 @@ function ExperiencePanel() {
 
       <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-4 md:gap-8 items-start">
         {/* Company list — horizontal on mobile, vertical on desktop */}
-        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" data-scrollable>
+        <HScrollHint>
           {experience.map((e, i) => (
             <button
               key={e.company}
@@ -272,7 +310,7 @@ function ExperiencePanel() {
               </span>
             </button>
           ))}
-        </div>
+        </HScrollHint>
 
         {/* Right — selected details */}
         <AnimatePresence mode="wait">
@@ -423,7 +461,7 @@ function SystemsPanel() {
 
       <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] lg:grid-cols-[240px_1fr] gap-3 md:gap-6 items-start flex-1 min-h-0">
         {/* Left — system selector */}
-        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 flex-shrink-0" data-scrollable>
+        <HScrollHint className="flex-shrink-0">
           {systems.map((s, i) => (
             <button
               key={s.title}
@@ -450,7 +488,7 @@ function SystemsPanel() {
               </span>
             </button>
           ))}
-        </div>
+        </HScrollHint>
 
         {/* Right — selected system details */}
         <div className="overflow-y-auto min-h-0 flex-1 md:flex-initial" data-scrollable>
