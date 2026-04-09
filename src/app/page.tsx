@@ -534,7 +534,7 @@ export default function Home() {
                   <img src="/photo.png" alt="Abdelhamid Zainhom" className="absolute inset-0 w-full h-full object-cover object-top" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-transparent" />
                 </div>
-                <div className="flex-1 flex flex-col justify-center px-6 md:pl-[clamp(40px,5vw,100px)] md:pr-8 -mt-10 md:mt-0 relative z-10">
+                <div className="flex-1 flex flex-col justify-center px-6 md:pl-[clamp(40px,5vw,100px)] md:pr-8 -mt-10 md:mt-0 py-6 md:py-10 relative z-10">
                   <span className="overline block mb-3">Abdelhamid Zainhom</span>
                   <h1 className="heading-hero mb-4">
                     I don&apos;t just<br />design or<br />animate.<br />

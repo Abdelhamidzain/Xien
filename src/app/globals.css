@@ -80,7 +80,7 @@ body {
 }
 
 .heading-hero {
-  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-size: clamp(1.8rem, min(7vw, 5.8vh), 7rem);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -243,7 +243,7 @@ body {
 
 @media (max-width: 768px) {
   :root { --sidebar-w: 0px; }
-  .heading-hero { font-size: clamp(1.8rem, 10vw, 3.5rem); }
+  .heading-hero { font-size: clamp(1.8rem, min(10vw, 5.5vh), 3.5rem); }
   .heading-lg { font-size: clamp(1.3rem, 6vw, 2rem); }
   .section-inner { padding: 0 20px; }
 }
