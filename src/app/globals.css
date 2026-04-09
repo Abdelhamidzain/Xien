@@ -74,8 +74,10 @@ body {
 .overline {
   font-family: var(--font-mono), monospace;
   font-size: 16px;
+  font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+  text-decoration: none;
   color: var(--text-muted);
   text-decoration-line: underline;
 }
