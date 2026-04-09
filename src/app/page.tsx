@@ -138,38 +138,50 @@ const videos = [
 const systems = [
   {
     title: "Brand Production at Scale",
-    impact: "60–70% faster",
-    value: "Most creative teams spend hours — sometimes days — manually rebuilding the same assets in different sizes, formats, and languages. Every new campaign means starting from scratch: resizing social posts, reformatting print layouts, adjusting for Arabic and English. This system eliminates all of that. One single source file automatically generates every variant your team needs. A campaign that used to take a full production week now ships in one to two days. Your designers spend their time on creative thinking, not mechanical repetition.",
+    impact: "60–70%",
+    impactLabel: "faster delivery",
+    before: "Your team rebuilds every asset manually — resizing, reformatting, adjusting for each channel. Every campaign restarts from zero. A week of production for what should take a day.",
+    after: "One source file generates every variant automatically. Campaigns that took a full production week now ship in one to two days. Designers think creatively instead of resizing mechanically.",
     for: "Marketing & Brand Teams",
   },
   {
     title: "Zero-Error Handoff",
-    impact: "0 revision loops",
-    value: "The biggest time killer in creative teams is the gap between design and motion. A designer creates a layout, hands it to the animator, and then three rounds of revisions follow because the animation doesn't match the original intent. My system bridges that gap entirely. Design decisions flow directly into animation — every color, every spacing value, every typographic choice transfers automatically. The result: what your designer approves is exactly what gets animated. No misinterpretation, no lost details, no wasted revision cycles. Your creative operations team moves at full speed instead of waiting on corrections.",
+    impact: "0",
+    impactLabel: "revision loops",
+    before: "Designer creates a layout, hands it to the animator, then three rounds of revisions follow. The animation never matches the original intent. Weeks lost in back-and-forth.",
+    after: "Design decisions flow directly into animation — every color, spacing, and typographic choice transfers automatically. What gets approved is exactly what gets animated. Zero misinterpretation.",
     for: "Creative Operations",
   },
   {
     title: "Instant Multi-Format Delivery",
-    impact: "1-click export",
-    value: "Social media needs square and vertical. The website needs 16:9. Print needs high-res CMYK. The presentation needs light backgrounds. Instead of your team manually exporting and resizing for every channel, this system generates all deliverables from a single source of truth — in one click. Every format is pre-configured with the correct specs, naming conventions, and quality settings. Your digital and social teams receive final, publish-ready assets instead of raw files they need to process further. This alone saves hours of back-and-forth every single campaign cycle.",
+    impact: "1-click",
+    impactLabel: "all formats",
+    before: "Social needs square. Website needs 16:9. Print needs CMYK. Presentation needs light backgrounds. Your team manually exports and resizes for every single channel, every single time.",
+    after: "All deliverables generated from a single source of truth in one click. Every format pre-configured with correct specs and naming. Teams receive publish-ready assets, not files to process.",
     for: "Digital & Social Teams",
   },
   {
     title: "Brand Consistency Engine",
-    impact: "100% on-brand",
-    value: "When multiple designers, agencies, and departments touch your brand, inconsistency is inevitable. A slightly wrong green here, incorrect logo spacing there, a missing legal disclaimer somewhere else. These small errors compound into a diluted brand identity. This system enforces brand rules programmatically — every color, margin, typography choice, and legal element is locked in. Whether it's a junior designer or an external agency producing the asset, the output is guaranteed to be brand-compliant. Your brand governance team no longer has to police every deliverable manually — the system does it for them.",
+    impact: "100%",
+    impactLabel: "on-brand output",
+    before: "Multiple designers, agencies, and departments touch your brand. Wrong green here, incorrect spacing there, missing disclaimer somewhere. Small errors compound into a diluted identity.",
+    after: "Brand rules enforced programmatically — colors, margins, typography, legal elements all locked in. Whether a junior designer or external agency produces it, output is guaranteed brand-compliant.",
     for: "Brand Governance",
   },
   {
     title: "Scalable Project Architecture",
-    impact: "30+ projects managed",
-    value: "As organizations scale, projects multiply — and so does chaos. Files get lost in personal folders, naming conventions drift, and onboarding a new team member means weeks of figuring out where everything lives. This system creates a standardized, intelligent folder structure for every project from day one. Every asset, every version, every export has a predictable home. New team members onboard in hours instead of weeks because the structure is self-explanatory. When a project needs to be revisited six months later, everything is exactly where you'd expect it. Your project management team gets full visibility without chasing files across departments.",
+    impact: "30+",
+    impactLabel: "projects organized",
+    before: "Files lost in personal folders. Naming conventions drift. Onboarding a new team member means weeks of figuring out where everything lives. Revisiting old projects is archaeology.",
+    after: "Standardized structure for every project from day one. New members onboard in hours. Every asset, version, and export has a predictable home. Six months later, everything is exactly where you expect.",
     for: "Project Management",
   },
   {
     title: "Bilingual Production System",
-    impact: "AR + EN simultaneous",
-    value: "Running campaigns in both Arabic and English traditionally means two separate production tracks — doubling the timeline, doubling the cost, and creating endless opportunities for inconsistency between languages. This system produces both language versions simultaneously from the same source. Arabic right-to-left alignment, font substitution, and layout mirroring happen automatically. Your regional campaign team launches both versions at the same time, with guaranteed visual parity between languages. For organizations operating across the Middle East, this eliminates one of the most persistent production bottlenecks.",
+    impact: "2 langs",
+    impactLabel: "simultaneous output",
+    before: "Arabic and English campaigns mean two separate production tracks — doubling timelines, doubling costs, and creating endless inconsistency between language versions.",
+    after: "Both language versions produced simultaneously from the same source. RTL alignment, font substitution, and layout mirroring happen automatically. Guaranteed visual parity across languages.",
     for: "Regional Campaigns",
   },
 ];
@@ -375,6 +387,96 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
             </button>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ═══ SYSTEMS PANEL ═══ */
+
+function SystemsPanel() {
+  const [selected, setSelected] = useState(0);
+  const sys = systems[selected];
+
+  return (
+    <div className="section-inner flex flex-col justify-center h-full">
+      <div className="mb-4 md:mb-6">
+        <span className="overline block mb-2">What You Get</span>
+        <h2 className="heading-lg">I build <span style={{ color: accent }}>systems</span><br />that save your team time.</h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] lg:grid-cols-[240px_1fr] gap-4 md:gap-6 items-start">
+        {/* Left — system selector */}
+        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" data-scrollable>
+          {systems.map((s, i) => (
+            <button
+              key={s.title}
+              onClick={() => setSelected(i)}
+              className={`flex-shrink-0 md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded transition-all relative ${i === selected
+                ? "bg-white/[0.06]"
+                : "hover:bg-white/[0.02]"
+                }`}
+            >
+              {i === selected && (
+                <motion.div
+                  layoutId="sys-indicator"
+                  className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full"
+                  style={{ background: accent }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                />
+              )}
+              <span className="text-[11px] md:text-[12px] font-mono uppercase tracking-wider block mb-0.5"
+                style={{ color: i === selected ? accent : "rgba(255,255,255,0.2)" }}>
+                {s.for}
+              </span>
+              <span className={`text-[12px] md:text-[14px] font-bold uppercase tracking-wide block ${i === selected ? "text-white" : "text-white/30"}`}>
+                {s.title}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Right — selected system details */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selected}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="module-card p-5 md:p-8 relative"
+          >
+            {/* Impact metric — hero number */}
+            <div className="flex items-baseline gap-3 mb-5">
+              <span className="text-[2.5rem] md:text-[3.5rem] font-black leading-none" style={{ color: accent }}>{sys.impact}</span>
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider text-white/40">{sys.impactLabel}</span>
+            </div>
+
+            {/* Before / After */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-white/20" />
+                  <span className="text-[12px] md:text-[14px] font-bold uppercase tracking-wider text-white/30">Without system</span>
+                </div>
+                <p className="text-[13px] md:text-[15px] text-white/30 leading-relaxed">{sys.before}</p>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2 h-2 rounded-full" style={{ background: accent }} />
+                  <span className="text-[12px] md:text-[14px] font-bold uppercase tracking-wider" style={{ color: accent }}>With system</span>
+                </div>
+                <p className="text-[13px] md:text-[15px] text-white/60 leading-relaxed">{sys.after}</p>
+              </div>
+            </div>
+
+            {/* Footer tag */}
+            <div className="flex items-center gap-4 mt-6 pt-4 border-t border-white/[0.04]">
+              <span className="text-[11px] md:text-[13px] font-mono uppercase tracking-wider px-2 py-1 rounded" style={{ color: accent, background: "rgba(0,200,83,0.08)" }}>{sys.for}</span>
+              <span className="text-[12px] md:text-[14px] font-bold uppercase tracking-wide text-white/50">{sys.title}</span>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -660,28 +762,8 @@ export default function Home() {
               </div>
             )}
 
-            {/* 05 SYSTEMS */}
-            {panel === 4 && (
-              <div className="section-inner flex flex-col justify-center h-full">
-                <div className="mb-6">
-                  <span className="overline block mb-2">What You Get</span>
-                  <h2 className="heading-lg mb-3">I don&apos;t just design —<br />I build <span style={{ color: accent }}>systems</span> that<br />save your team time.</h2>
-                  <p className="body-text">Every system I build is designed to remove bottlenecks, eliminate repetitive work, and let your team focus on strategy — not production.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" data-scrollable>
-                  {systems.map((sys, i) => (
-                    <div key={sys.title} className="module-card p-4 md:p-5">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[11px] md:text-[13px] font-mono uppercase tracking-wider px-2 py-0.5 rounded" style={{ color: accent, background: "rgba(0,200,83,0.08)" }}>{sys.for}</span>
-                        <span className="text-[13px] md:text-[16px] font-bold" style={{ color: accent }}>{sys.impact}</span>
-                      </div>
-                      <h3 className="text-[14px] md:text-[17px] font-bold uppercase tracking-wide mb-2">{sys.title}</h3>
-                      <p className="text-[13px] md:text-[15px] text-white/40 leading-relaxed">{sys.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* 05 SYSTEMS — INTERACTIVE SELECTOR */}
+            {panel === 4 && <SystemsPanel />}
 
             {/* 06 WORKS — INTERACTIVE SELECTOR */}
             {panel === 5 && <WorksPanel featuredVideo={featuredVideo} setFeaturedVideo={setFeaturedVideo} />}
