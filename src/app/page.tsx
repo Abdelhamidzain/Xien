@@ -186,7 +186,7 @@ function ExperiencePanel() {
 
       <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-4 md:gap-8 items-start">
         {/* Company list — horizontal on mobile, vertical on desktop */}
-        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0">
+        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" data-scrollable>
           {experience.map((e, i) => (
             <button
               key={e.company}
@@ -204,11 +204,11 @@ function ExperiencePanel() {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 />
               )}
-              <span className="text-[16px] font-mono uppercase tracking-wider block mb-0.5"
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider block mb-0.5"
                 style={{ color: i === selected ? accent : "rgba(255,255,255,0.25)" }}>
                 {e.period}
               </span>
-              <span className={`text-[16px] font-bold uppercase tracking-wide block ${i === selected ? "text-white" : "text-white/30"
+              <span className={`text-[13px] md:text-[16px] font-bold uppercase tracking-wide block ${i === selected ? "text-white" : "text-white/30"
                 }`}>
                 {e.company}
               </span>
@@ -229,11 +229,11 @@ function ExperiencePanel() {
             <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
               <div>
                 <h3 className="text-[18px] md:text-[22px] font-black uppercase tracking-wide mb-1">{exp.company}</h3>
-                <p className="text-[16px] text-white/50">{exp.role}</p>
+                <p className="text-[13px] md:text-[16px] text-white/50">{exp.role}</p>
               </div>
               <div className="md:text-right flex md:block items-center gap-2">
-                <span className="text-[16px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">{exp.type}</span>
-                <span className="text-[16px] font-mono text-white/15 uppercase tracking-wider md:mt-2 md:block">{exp.location}</span>
+                <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">{exp.type}</span>
+                <span className="text-[13px] md:text-[16px] font-mono text-white/15 uppercase tracking-wider md:mt-2 md:block">{exp.location}</span>
               </div>
             </div>
 
@@ -244,7 +244,7 @@ function ExperiencePanel() {
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: j * 0.08, duration: 0.3 }}
-                  className="flex gap-3 text-[16px] text-white/40 leading-relaxed"
+                  className="flex gap-3 text-[13px] md:text-[16px] text-white/40 leading-relaxed"
                 >
                   <span className="text-[8px] mt-[7px] flex-shrink-0" style={{ color: accent }}>●</span>
                   {b}
@@ -254,8 +254,8 @@ function ExperiencePanel() {
 
             {/* Stats row */}
             <div className="flex items-center gap-6 mt-8 pt-5 border-t border-white/[0.04]">
-              <span className="text-[16px] font-mono uppercase tracking-wider" style={{ color: accent }}>{exp.period}</span>
-              <span className="text-[16px] text-white/20">{exp.location}</span>
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider" style={{ color: accent }}>{exp.period}</span>
+              <span className="text-[13px] md:text-[16px] text-white/20">{exp.location}</span>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -300,10 +300,10 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
           </AnimatePresence>
           <div className="flex items-center justify-between mt-3">
             <div>
-              <span className="text-[16px] font-bold uppercase tracking-wide">{featuredVideo.title}</span>
-              <span className="text-[16px] font-mono uppercase tracking-wider ml-3" style={{ color: accent }}>{featuredVideo.tag}</span>
+              <span className="text-[13px] md:text-[16px] font-bold uppercase tracking-wide">{featuredVideo.title}</span>
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider ml-3" style={{ color: accent }}>{featuredVideo.tag}</span>
             </div>
-            <span className="text-[16px] font-mono text-white/20">
+            <span className="text-[13px] md:text-[16px] font-mono text-white/20">
               {videos.findIndex(v => v.id === featuredVideo.id) + 1} / {videos.slice(0, 20).length}
             </span>
           </div>
@@ -338,10 +338,10 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
                 </div>
               </div>
               <div className="min-w-0 flex-1">
-                <span className={`text-[16px] font-bold uppercase tracking-wide block truncate ${vid.id === featuredVideo.id ? "text-white" : "text-white/30"}`}>{vid.title}</span>
-                <span className="text-[16px] font-mono uppercase tracking-wider" style={{ color: vid.id === featuredVideo.id ? accent : "rgba(255,255,255,0.15)" }}>{vid.tag}</span>
+                <span className={`text-[13px] md:text-[16px] font-bold uppercase tracking-wide block truncate ${vid.id === featuredVideo.id ? "text-white" : "text-white/30"}`}>{vid.title}</span>
+                <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider" style={{ color: vid.id === featuredVideo.id ? accent : "rgba(255,255,255,0.15)" }}>{vid.tag}</span>
               </div>
-              <span className="text-[16px] font-mono text-white/10 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-[13px] md:text-[16px] font-mono text-white/10 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
             </button>
           ))}
         </div>
@@ -397,12 +397,29 @@ export default function Home() {
       else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); prev(); }
       else if (e.key === "Escape") setMenuOpen(false);
     };
-    let touchStartX = 0, touchStartY = 0;
-    const handleTouchStart = (e: TouchEvent) => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; };
+    let touchStartX = 0, touchStartY = 0, touchStartTarget: EventTarget | null = null;
+    const handleTouchStart = (e: TouchEvent) => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; touchStartTarget = e.target; };
     const handleTouchEnd = (e: TouchEvent) => {
       const dX = touchStartX - e.changedTouches[0].clientX;
       const dY = touchStartY - e.changedTouches[0].clientY;
       if (Math.max(Math.abs(dX), Math.abs(dY)) < 60) return;
+      // Check if swipe started inside a scrollable container
+      const scrollable = (touchStartTarget as HTMLElement)?.closest?.("[data-scrollable]");
+      if (scrollable) {
+        const el = scrollable as HTMLElement;
+        const isHorizontal = el.scrollWidth > el.clientWidth;
+        const isVertical = el.scrollHeight > el.clientHeight;
+        if (isHorizontal && Math.abs(dX) > Math.abs(dY)) {
+          const atLeft = el.scrollLeft <= 0 && dX < 0;
+          const atRight = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4 && dX > 0;
+          if (!atLeft && !atRight) return;
+        }
+        if (isVertical && Math.abs(dY) > Math.abs(dX)) {
+          const atTop = el.scrollTop <= 0 && dY < 0;
+          const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 4 && dY > 0;
+          if (!atTop && !atBottom) return;
+        }
+      }
       if (Math.abs(dX) > Math.abs(dY)) { dX > 0 ? next() : prev(); }
       else { dY > 0 ? next() : prev(); }
     };
@@ -460,7 +477,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <span className="text-[16px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
+        <span className="text-[13px] md:text-[16px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
       </div>
 
       {/* Mobile bottom bar */}
@@ -477,7 +494,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <span className="text-[16px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
+        <span className="text-[13px] md:text-[16px] font-mono text-white/30">{String(panel + 1).padStart(2, "0")}/{String(TOTAL).padStart(2, "0")}</span>
       </div>
 
       {/* ═══ MENU PANEL ═══ */}
@@ -491,15 +508,15 @@ export default function Home() {
               transition={{ duration: 0.4, ease }}
               className="fixed left-0 md:left-[56px] top-0 bottom-0 w-full md:w-[260px] z-[96] bg-[#0a0a0c]/95 md:bg-black/70 md:backdrop-blur-xl md:border-r border-white/[0.04] flex flex-col justify-center px-8"
             >
-              <span className="text-[16px] font-mono text-white/20 uppercase tracking-[0.3em] mb-8">Index</span>
+              <span className="text-[13px] md:text-[16px] font-mono text-white/20 uppercase tracking-[0.3em] mb-8">Index</span>
               {sections.map((name, i) => (
                 <button key={name} onClick={() => go(i)}
                   className={`flex items-center gap-4 py-3.5 text-left w-full border-b border-white/[0.04] transition-all ${i === panel ? "opacity-100" : "opacity-30 hover:opacity-60"
                     }`}>
-                  <span className="text-[16px] font-mono w-8" style={{ color: i === panel ? accent : "rgba(255,255,255,0.3)" }}>
+                  <span className="text-[13px] md:text-[16px] font-mono w-8" style={{ color: i === panel ? accent : "rgba(255,255,255,0.3)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-[16px] font-bold uppercase tracking-wider text-white">{name}</span>
+                  <span className="text-[13px] md:text-[16px] font-bold uppercase tracking-wider text-white">{name}</span>
                   {i === panel && <div className="ml-auto w-1.5 h-1.5 rounded-full" style={{ background: accent }} />}
                 </button>
               ))}
@@ -576,12 +593,12 @@ export default function Home() {
                     ].map((f) => (
                       <div key={f.l} className="flex justify-between border-b border-white/[0.06] pb-3">
                         <span className="label-mono flex-shrink-0">{f.l}</span>
-                        <span className="text-[16px] text-white/60 text-right ml-4 line-clamp-2">{f.v}</span>
+                        <span className="text-[13px] md:text-[16px] text-white/60 text-right ml-4 line-clamp-2">{f.v}</span>
                       </div>
                     ))}
                     <div className="flex flex-wrap gap-2 pt-1">
                       {["Art Direction", "Motion Design", "Branding", "3D Animation", "Automation"].map((s) => (
-                        <span key={s} className="px-2.5 py-1 text-[16px] font-mono uppercase tracking-wider border border-white/[0.08] text-white/35">{s}</span>
+                        <span key={s} className="px-2.5 py-1 text-[13px] md:text-[16px] font-mono uppercase tracking-wider border border-white/[0.08] text-white/35">{s}</span>
                       ))}
                     </div>
                   </div>
@@ -604,8 +621,8 @@ export default function Home() {
                   <div>
                     {["Understand", "Sketch", "Design", "Adapt", "Animate", "Systemize", "Deliver"].map((step, i) => (
                       <div key={step} className="flex items-center gap-4 py-3 border-b border-white/[0.06] group hover:bg-white/[0.01] px-2 -mx-2 transition-colors">
-                        <span className="text-[16px] font-mono text-white/15 w-5 group-hover:text-[#00C853] transition-colors">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="text-[16px] font-bold uppercase tracking-wide">{step}</span>
+                        <span className="text-[13px] md:text-[16px] font-mono text-white/15 w-5 group-hover:text-[#00C853] transition-colors">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[13px] md:text-[16px] font-bold uppercase tracking-wide">{step}</span>
                       </div>
                     ))}
                   </div>
@@ -623,11 +640,11 @@ export default function Home() {
                   {systems.map((sys, i) => (
                     <div key={sys.title} className="module-card">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[16px] font-mono text-white/20">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="text-[16px] font-mono uppercase tracking-wider text-white/20 px-1.5 py-0.5 bg-white/[0.06]">{sys.stat}</span>
+                        <span className="text-[13px] md:text-[16px] font-mono text-white/20">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider text-white/20 px-1.5 py-0.5 bg-white/[0.06]">{sys.stat}</span>
                       </div>
-                      <h3 className="text-[16px] font-bold uppercase tracking-wide mb-1">{sys.title}</h3>
-                      <p className="text-[16px] text-white/30 leading-relaxed">{sys.desc}</p>
+                      <h3 className="text-[13px] md:text-[16px] font-bold uppercase tracking-wide mb-1">{sys.title}</h3>
+                      <p className="text-[13px] md:text-[16px] text-white/30 leading-relaxed">{sys.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -645,15 +662,15 @@ export default function Home() {
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-5">
                     <span className="label-mono w-28 flex-shrink-0">Email</span>
-                    <a href="mailto:Abdelhamid.zainhom@gmail.com" className="text-[16px] text-white/60 hover:text-[#00C853] transition-colors">Abdelhamid.zainhom@gmail.com</a>
+                    <a href="mailto:Abdelhamid.zainhom@gmail.com" className="text-[13px] md:text-[16px] text-white/60 hover:text-[#00C853] transition-colors">Abdelhamid.zainhom@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-5">
                     <span className="label-mono w-28 flex-shrink-0">Phone</span>
-                    <a href="tel:0563787025" className="text-[16px] text-white/60 hover:text-[#00C853] transition-colors">0563787025</a>
+                    <a href="tel:0563787025" className="text-[13px] md:text-[16px] text-white/60 hover:text-[#00C853] transition-colors">0563787025</a>
                   </div>
                   <div className="flex items-center gap-5">
                     <span className="label-mono w-28 flex-shrink-0">Location</span>
-                    <span className="text-[16px] text-white/60">Riyadh — Saudi Arabia</span>
+                    <span className="text-[13px] md:text-[16px] text-white/60">Riyadh — Saudi Arabia</span>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 md:gap-3">
@@ -662,7 +679,7 @@ export default function Home() {
                   <a href="https://www.linkedin.com/in/xien/" target="_blank" rel="noopener noreferrer" className="btn-outline">LinkedIn</a>
                   <a href="/cv.pdf" download className="btn-outline">Download CV</a>
                 </div>
-                <p className="mt-10 text-[16px] font-mono text-white/15 uppercase tracking-wider">&copy; 2026 Abdelhamid Zainhom</p>
+                <p className="mt-10 text-[13px] md:text-[16px] font-mono text-white/15 uppercase tracking-wider">&copy; 2026 Abdelhamid Zainhom</p>
               </div>
             )}
           </motion.div>

@@ -248,4 +248,8 @@ body {
   .heading-hero { font-size: clamp(1.8rem, min(10vw, 5.5vh), 3.5rem); }
   .heading-lg { font-size: clamp(1.3rem, 6vw, 2rem); }
   .section-inner { padding: 0 20px; }
+  .overline { font-size: 12px; }
+  .label-mono { font-size: 13px; }
+  .body-text { font-size: 14px; }
+  .btn-primary, .btn-outline { font-size: 13px; }
 }
