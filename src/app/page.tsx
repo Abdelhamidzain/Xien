@@ -422,8 +422,15 @@ export default function Home() {
     <div className="h-screen w-screen overflow-hidden bg-[#0a0a0c] relative">
 
 
-      {/* ═══ ETHERAL SHADOW BG ═══ */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* ═══ BG — Full on desktop, lightweight on mobile ═══ */}
+      {/* Mobile: static CSS gradient (no SVG animation) */}
+      <div className="md:hidden fixed inset-0 z-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at 30% 20%, rgba(0,200,83,0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(0,200,83,0.06) 0%, transparent 50%), #0a0a0c",
+        }}
+      />
+      {/* Desktop: full animated background */}
+      <div className="hidden md:block fixed inset-0 z-0 pointer-events-none">
         <EtheralShadow
           color="rgba(0, 200, 83, 0.15)"
           animation={{ scale: 80, speed: 90 }}
@@ -455,7 +462,7 @@ export default function Home() {
       </div>
 
       {/* Mobile bottom bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] bg-black/60 backdrop-blur-md border-t border-white/[0.04] flex items-center justify-between px-4 py-3">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] bg-[#0a0a0c]/95 border-t border-white/[0.04] flex items-center justify-between px-4 py-3">
         <button onClick={() => setMenuOpen(!menuOpen)} className="w-8 h-8 flex flex-col items-center justify-center gap-[4px]">
           <span className={`block w-5 h-[1.5px] bg-white/60 transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[5.5px]" : ""}`} />
           <span className={`block w-5 h-[1.5px] bg-white/60 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
@@ -476,11 +483,11 @@ export default function Home() {
         {menuOpen && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[95] bg-black/40 backdrop-blur-sm" onClick={() => setMenuOpen(false)} />
+              className="fixed inset-0 z-[95] bg-black/60" onClick={() => setMenuOpen(false)} />
             <motion.div
               initial={{ x: -280 }} animate={{ x: 0 }} exit={{ x: -280 }}
               transition={{ duration: 0.4, ease }}
-              className="fixed left-0 md:left-[56px] top-0 bottom-0 w-full md:w-[260px] z-[96] bg-black/80 md:bg-black/70 backdrop-blur-xl md:border-r border-white/[0.04] flex flex-col justify-center px-8"
+              className="fixed left-0 md:left-[56px] top-0 bottom-0 w-full md:w-[260px] z-[96] bg-[#0a0a0c]/95 md:bg-black/70 md:backdrop-blur-xl md:border-r border-white/[0.04] flex flex-col justify-center px-8"
             >
               <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] mb-8">Index</span>
               {sections.map((name, i) => (
