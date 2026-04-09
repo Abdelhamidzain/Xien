@@ -415,7 +415,7 @@ function SystemsPanel() {
   const sys = systems[selected];
 
   return (
-    <div className="section-inner flex flex-col justify-start md:justify-center h-full py-4 md:py-6">
+    <div className="section-inner flex flex-col justify-start md:justify-center h-full pt-16 pb-4 md:py-6">
       <div className="mb-3 md:mb-6 flex-shrink-0">
         <span className="overline block mb-1 md:mb-2">What You Get</span>
         <h2 className="heading-lg">I build <span style={{ color: accent }}>systems</span><br className="hidden md:block" /> that save your team time.</h2>
