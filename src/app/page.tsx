@@ -240,7 +240,50 @@ const systems = [
   },
 ];
 
-const sections = ["Manifesto", "About", "Experience", "Process", "Systems", "Works", "Contact"];
+const processSteps = [
+  {
+    name: "Understand",
+    headline: "Before a single pixel — I study your business.",
+    desc: "I don't start with design. I start with your goals, your audience, and the problem you're solving. I study your competitors, analyze what's working in your industry, and identify where your brand has gaps. This phase determines everything that follows — because a beautiful design built on wrong assumptions is still a failure. By the end, I have a clear strategic brief that every creative decision will be measured against.",
+    outcome: "Strategic brief & competitive analysis",
+  },
+  {
+    name: "Sketch",
+    headline: "Rapid concepts — no time wasted on wrong directions.",
+    desc: "Instead of jumping into Illustrator and spending days on a polished concept that might miss the mark, I sketch 10–15 rough directions in hours. These aren't pretty — they're strategic. Each one explores a different angle, a different tone, a different visual approach. You see all the options early and choose the direction before any real production time is invested. This saves weeks of revision later because alignment happens at the cheapest possible stage.",
+    outcome: "10–15 concept directions in hours, not days",
+  },
+  {
+    name: "Design",
+    headline: "Every design is built as a system — not a one-off.",
+    desc: "When I design, I'm not creating a single poster or a single social post. I'm building a visual system that can scale across 50+ formats, two languages, and multiple campaigns. Every color, every spacing rule, every typography choice is structured so it can be replicated automatically. This means the first asset takes full creative effort — but the next 100 assets take almost zero time because the system generates them.",
+    outcome: "Scalable design system, not one-time artwork",
+  },
+  {
+    name: "Adapt",
+    headline: "One design becomes every format your team needs.",
+    desc: "This is where most agencies burn time — manually resizing and reformatting for every channel. I've eliminated this entirely. The design system automatically adapts to Instagram stories, Facebook ads, LinkedIn banners, Google Display networks, website headers, presentation slides, and print formats. Each adaptation respects platform-specific safe zones and constraints. Your team receives publish-ready files for every channel, not one master file they need to recreate 20 times.",
+    outcome: "50+ platform-ready formats from one source",
+  },
+  {
+    name: "Animate",
+    headline: "Motion that follows the same system — zero deviation.",
+    desc: "Animation isn't a separate track. It's a direct extension of the design system. Every color, timing, and composition choice flows from the approved design into motion automatically. The animator doesn't reinterpret the design — the system transfers it. This eliminates the revision cycles that plague most design-to-motion handoffs. What you approved in the design phase is exactly what you see in motion — frame by frame, pixel by pixel.",
+    outcome: "Design-to-motion with zero revision loops",
+  },
+  {
+    name: "Systemize",
+    headline: "Everything becomes repeatable — your team inherits the system.",
+    desc: "After delivery, I don't leave you with files. I leave you with a production system. Templates, automation scripts, folder structures, naming conventions, export presets — everything your team needs to produce the next campaign without me. A junior designer can maintain the output quality of a senior art director because the system enforces the rules. Your creative operations become predictable, scalable, and independent of any single person.",
+    outcome: "Self-sustaining production system for your team",
+  },
+  {
+    name: "Deliver",
+    headline: "Organized, labeled, ready — not a folder dump.",
+    desc: "Delivery isn't a zip file thrown over email. Every asset is organized by platform, language, and format. Naming conventions follow your team's structure. Version history is preserved. The delivery package includes everything needed to go live immediately — no sorting, no renaming, no guessing which file is final. Your project manager opens the package and knows exactly where everything is. Client-ready in minutes, not hours of archaeology.",
+    outcome: "Client-ready delivery package in minutes",
+  },
+];
 
 const enterEase: Easing = [0.25, 1, 0.5, 1];
 const exitEase: Easing = [0.4, 0, 1, 1];
@@ -440,6 +483,86 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
               <span className="text-[13px] md:text-[16px] font-mono text-white/10 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
             </button>
           ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ═══ PROCESS PANEL ═══ */
+
+function ProcessPanel() {
+  const [selected, setSelected] = useState(0);
+  const step = processSteps[selected];
+
+  return (
+    <div className="section-inner flex flex-col justify-start md:justify-center h-full py-4 md:py-6">
+      <div className="mb-3 md:mb-6 flex-shrink-0">
+        <span className="overline block mb-1 md:mb-3">Process</span>
+        <h2 className="heading-lg">From <span style={{ color: accent }}>idea</span><br className="hidden md:block" /> to execution.</h2>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-3 md:gap-8 items-start flex-1 min-h-0">
+        {/* Left — step selector */}
+        <div className="flex md:flex-col gap-0.5 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 flex-shrink-0" data-scrollable>
+          {processSteps.map((s, i) => (
+            <button
+              key={s.name}
+              onClick={() => setSelected(i)}
+              className={`flex-shrink-0 md:w-full text-left flex items-center gap-3 px-3 md:px-4 py-2 md:py-3 rounded transition-all relative ${i === selected
+                ? "bg-white/[0.06]"
+                : "hover:bg-white/[0.02]"
+                }`}
+            >
+              {i === selected && (
+                <motion.div
+                  layoutId="proc-indicator"
+                  className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full"
+                  style={{ background: accent }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                />
+              )}
+              <span className="text-[11px] md:text-[14px] font-mono"
+                style={{ color: i === selected ? accent : "rgba(255,255,255,0.15)" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className={`text-[12px] md:text-[16px] font-bold uppercase tracking-wide ${i === selected ? "text-white" : "text-white/30"}`}>
+                {s.name}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Right — selected step details */}
+        <div className="overflow-y-auto min-h-0 flex-1 md:flex-initial" data-scrollable>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selected}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="module-card p-4 md:p-8 relative"
+            >
+              {/* Step number + name */}
+              <div className="flex items-baseline gap-3 mb-3 md:mb-4">
+                <span className="text-[1.8rem] md:text-[3rem] font-black leading-none" style={{ color: accent }}>{String(selected + 1).padStart(2, "0")}</span>
+                <span className="text-[14px] md:text-[18px] font-bold uppercase tracking-wide">{step.name}</span>
+              </div>
+
+              {/* Headline */}
+              <h3 className="text-[14px] md:text-[20px] font-bold leading-snug mb-3 md:mb-5 text-white/90">{step.headline}</h3>
+
+              {/* Description */}
+              <p className="text-[12px] md:text-[15px] text-white/40 leading-relaxed mb-4 md:mb-6">{step.desc}</p>
+
+              {/* Outcome */}
+              <div className="flex items-center gap-3 pt-3 md:pt-4 border-t border-white/[0.04]">
+                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: accent }} />
+                <span className="text-[12px] md:text-[15px] font-bold" style={{ color: accent }}>{step.outcome}</span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </div>
@@ -797,26 +920,8 @@ export default function Home() {
             {/* 03 EXPERIENCE — INTERACTIVE CARD SELECTOR */}
             {panel === 2 && <ExperiencePanel />}
 
-            {/* 04 PROCESS */}
-            {panel === 3 && (
-              <div className="section-inner">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-                  <div>
-                    <span className="overline block mb-3">Process</span>
-                    <h2 className="heading-lg mb-5">From <span style={{ color: accent }}>idea</span><br />to execution.</h2>
-                    <p className="body-text">Every project moves through a disciplined process that turns concepts into systems.</p>
-                  </div>
-                  <div>
-                    {["Understand", "Sketch", "Design", "Adapt", "Animate", "Systemize", "Deliver"].map((step, i) => (
-                      <div key={step} className="flex items-center gap-4 py-3 border-b border-white/[0.06] group hover:bg-white/[0.01] px-2 -mx-2 transition-colors">
-                        <span className="text-[13px] md:text-[16px] font-mono text-white/15 w-5 group-hover:text-[#00C853] transition-colors">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="text-[13px] md:text-[16px] font-bold uppercase tracking-wide">{step}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
+            {/* 04 PROCESS — INTERACTIVE SELECTOR */}
+            {panel === 3 && <ProcessPanel />}
 
             {/* 05 SYSTEMS — INTERACTIVE SELECTOR */}
             {panel === 4 && <SystemsPanel />}
