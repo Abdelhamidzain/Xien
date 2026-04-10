@@ -319,7 +319,7 @@ function ExperiencePanel() {
   const exp = experience[selected];
 
   return (
-    <div className="section-inner flex flex-col justify-center h-full">
+    <div className="section-inner flex flex-col justify-center min-h-full py-6">
       <div className="mb-6">
         <span className="overline block mb-2">Career</span>
         <h2 className="heading-lg">Where I&apos;ve <span style={{ color: accent }}>built</span>.</h2>
@@ -412,7 +412,7 @@ function WorksPanel({ featuredVideo, setFeaturedVideo }: {
   setFeaturedVideo: (v: typeof videos[0]) => void;
 }) {
   return (
-    <div className="section-inner flex flex-col justify-center h-full">
+    <div className="section-inner flex flex-col justify-center min-h-full py-6">
       <div className="mb-4">
         <span className="overline block mb-1">Works</span>
         <h2 className="heading-lg">The <span style={{ color: accent }}>evidence</span>.</h2>
@@ -498,7 +498,7 @@ function ProcessPanel() {
   const step = processSteps[selected];
 
   return (
-    <div className="section-inner flex flex-col justify-center h-full">
+    <div className="section-inner flex flex-col justify-center min-h-full py-6">
       <div className="mb-6">
         <span className="overline block mb-2">Process</span>
         <h2 className="heading-lg">From <span style={{ color: accent }}>idea</span> to execution.</h2>
@@ -573,7 +573,7 @@ function SystemsPanel() {
   const sys = systems[selected];
 
   return (
-    <div className="section-inner flex flex-col justify-center h-full">
+    <div className="section-inner flex flex-col justify-center min-h-full py-6">
       <div className="mb-6">
         <span className="overline block mb-2">What You Get</span>
         <h2 className="heading-lg">I build <span style={{ color: accent }}>systems</span> that save your team time.</h2>
@@ -849,11 +849,11 @@ export default function Home() {
       >
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div key={panel} custom={dir} variants={variants} initial="enter" animate="center" exit="exit"
-            transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }} className="absolute inset-0 flex items-center overflow-x-hidden overflow-y-auto" data-scrollable>
+            transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }} className="absolute inset-0 overflow-x-hidden overflow-y-auto" data-scrollable>
 
             {/* 01 MANIFESTO */}
             {panel === 0 && (
-              <div className="w-full h-full flex flex-col md:flex-row">
+              <div className="w-full min-h-full flex flex-col md:flex-row">
                 {/* Mobile: photo at top */}
                 <div className="md:hidden w-full h-[40%] relative flex items-center justify-center overflow-hidden">
                   <img src="/photo.png" alt="Abdelhamid Zainhom" className="w-full h-full object-cover object-center" />
@@ -884,7 +884,7 @@ export default function Home() {
 
             {/* 02 ABOUT */}
             {panel === 1 && (
-              <div className="section-inner">
+              <div className="section-inner min-h-full flex flex-col justify-center py-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
                   <div>
                     <span className="overline block mb-4">About</span>
@@ -928,7 +928,7 @@ export default function Home() {
 
             {/* 07 CONTACT */}
             {panel === 6 && (
-              <div className="section-inner">
+              <div className="section-inner min-h-full flex flex-col justify-center py-6">
                 <span className="overline block mb-4">Get in Touch</span>
                 <h2 className="heading-hero mb-8">Let&apos;s build<br />something<br /><span style={{ color: accent }}>remarkable</span>.</h2>
                 <div className="space-y-4 mb-8">
