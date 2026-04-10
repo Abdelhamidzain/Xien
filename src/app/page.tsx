@@ -979,7 +979,7 @@ export default function Home() {
                   <a href="https://vimeo.com/xien" target="_blank" rel="noopener noreferrer" className="btn-primary">Vimeo</a>
                   <a href="https://www.behance.net/Xien/" target="_blank" rel="noopener noreferrer" className="btn-outline">Behance</a>
                   <a href="https://www.linkedin.com/in/xien/" target="_blank" rel="noopener noreferrer" className="btn-outline">LinkedIn</a>
-                  <a href="/cv.pdf" download className="btn-outline">Download CV</a>
+                  <a href="https://drive.google.com/uc?export=download&id=1iFqX-feaDej8DCQqq2AfFqHxOgXevhXf" target="_blank" rel="noopener noreferrer" className="btn-outline">Download CV</a>
                 </div>
                 <p className="mt-10 text-[13px] md:text-[16px] font-mono text-white/15 uppercase tracking-wider">&copy; 2026 Abdelhamid Zainhom</p>
               </div>
