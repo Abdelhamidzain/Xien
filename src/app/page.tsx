@@ -247,6 +247,8 @@ const processSteps = [
   },
 ];
 
+const sections = ["Manifesto", "About", "Experience", "Process", "Systems", "Works", "Contact"];
+
 const enterEase: Easing = [0.25, 1, 0.5, 1];
 const exitEase: Easing = [0.4, 0, 1, 1];
 const skewEase: Easing = [0.16, 1, 0.3, 1];
