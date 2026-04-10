@@ -506,7 +506,7 @@ function ProcessPanel() {
 
       <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-4 md:gap-8 items-start">
         {/* Left — step selector */}
-        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" data-scrollable>
+        <HScrollHint>
           {processSteps.map((s, i) => (
             <button
               key={s.name}
@@ -533,7 +533,7 @@ function ProcessPanel() {
               </span>
             </button>
           ))}
-        </div>
+        </HScrollHint>
 
         {/* Right — selected step details */}
         <AnimatePresence mode="wait">
