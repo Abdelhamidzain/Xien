@@ -535,20 +535,20 @@ function SystemsPanel() {
   const sys = systems[selected];
 
   return (
-    <div className="section-inner flex flex-col justify-start md:justify-center h-full py-4 md:py-6">
-      <div className="mb-3 md:mb-6 flex-shrink-0">
-        <span className="overline block mb-1 md:mb-2">What You Get</span>
-        <h2 className="heading-lg">I build <span style={{ color: accent }}>systems</span><br className="hidden md:block" /> that save your team time.</h2>
+    <div className="section-inner flex flex-col justify-center h-full">
+      <div className="mb-6">
+        <span className="overline block mb-2">What You Get</span>
+        <h2 className="heading-lg">I build <span style={{ color: accent }}>systems</span> that save your team time.</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] lg:grid-cols-[240px_1fr] gap-3 md:gap-6 items-start flex-1 min-h-0">
+      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-4 md:gap-8 items-start">
         {/* Left — system selector */}
-        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 flex-shrink-0" data-scrollable>
+        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" data-scrollable>
           {systems.map((s, i) => (
             <button
               key={s.title}
               onClick={() => setSelected(i)}
-              className={`flex-shrink-0 md:w-full text-left px-3 md:px-4 py-1.5 md:py-2.5 rounded transition-all relative ${i === selected
+              className={`flex-shrink-0 md:w-full text-left px-3 md:px-4 py-2 md:py-3 rounded transition-all relative ${i === selected
                 ? "bg-white/[0.06]"
                 : "hover:bg-white/[0.02]"
                 }`}
@@ -561,11 +561,11 @@ function SystemsPanel() {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 />
               )}
-              <span className="text-[10px] md:text-[12px] font-mono uppercase tracking-wider block mb-0.5"
-                style={{ color: i === selected ? accent : "rgba(255,255,255,0.2)" }}>
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider block mb-0.5"
+                style={{ color: i === selected ? accent : "rgba(255,255,255,0.25)" }}>
                 {s.for}
               </span>
-              <span className={`text-[11px] md:text-[14px] font-bold uppercase tracking-wide block ${i === selected ? "text-white" : "text-white/30"}`}>
+              <span className={`text-[13px] md:text-[16px] font-bold uppercase tracking-wide block ${i === selected ? "text-white" : "text-white/30"}`}>
                 {s.title}
               </span>
             </button>
@@ -573,48 +573,48 @@ function SystemsPanel() {
         </div>
 
         {/* Right — selected system details */}
-        <div className="overflow-y-auto min-h-0 flex-1 md:flex-initial" data-scrollable>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selected}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="module-card p-4 md:p-8 relative"
-            >
-              {/* Impact metric — hero number */}
-              <div className="flex items-baseline gap-3 mb-3 md:mb-5">
-                <span className="text-[2rem] md:text-[3.5rem] font-black leading-none" style={{ color: accent }}>{sys.impact}</span>
-                <span className="text-[12px] md:text-[16px] font-mono uppercase tracking-wider text-white/40">{sys.impactLabel}</span>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selected}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="module-card p-5 md:p-8 relative"
+          >
+            <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
+              <div>
+                <h3 className="text-[18px] md:text-[22px] font-black uppercase tracking-wide mb-1">{sys.title}</h3>
+                <p className="text-[13px] md:text-[16px] text-white/50">{sys.for}</p>
               </div>
+              <span className="text-[18px] md:text-[24px] font-black font-mono" style={{ color: accent }}>{sys.impact} <span className="text-[13px] md:text-[16px] font-normal uppercase tracking-wider text-white/40">{sys.impactLabel}</span></span>
+            </div>
 
-              {/* Before / After */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="w-2 h-2 rounded-full bg-white/20" />
-                    <span className="text-[11px] md:text-[14px] font-bold uppercase tracking-wider text-white/30">Without system</span>
-                  </div>
-                  <p className="text-[12px] md:text-[15px] text-white/30 leading-relaxed">{sys.before}</p>
+            {/* Before / After */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2 h-2 rounded-full bg-white/20" />
+                  <span className="text-[13px] md:text-[16px] font-bold uppercase tracking-wider text-white/30">Without system</span>
                 </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="w-2 h-2 rounded-full" style={{ background: accent }} />
-                    <span className="text-[11px] md:text-[14px] font-bold uppercase tracking-wider" style={{ color: accent }}>With system</span>
-                  </div>
-                  <p className="text-[12px] md:text-[15px] text-white/60 leading-relaxed">{sys.after}</p>
-                </div>
+                <p className="text-[13px] md:text-[16px] text-white/30 leading-relaxed">{sys.before}</p>
               </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2 h-2 rounded-full" style={{ background: accent }} />
+                  <span className="text-[13px] md:text-[16px] font-bold uppercase tracking-wider" style={{ color: accent }}>With system</span>
+                </div>
+                <p className="text-[13px] md:text-[16px] text-white/60 leading-relaxed">{sys.after}</p>
+              </div>
+            </div>
 
-              {/* Footer tag */}
-              <div className="flex items-center gap-4 mt-4 pt-3 border-t border-white/[0.04]">
-                <span className="text-[10px] md:text-[13px] font-mono uppercase tracking-wider px-2 py-1 rounded" style={{ color: accent, background: "rgba(0,200,83,0.08)" }}>{sys.for}</span>
-                <span className="text-[11px] md:text-[14px] font-bold uppercase tracking-wide text-white/50">{sys.title}</span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            {/* Footer */}
+            <div className="flex items-center gap-6 mt-8 pt-5 border-t border-white/[0.04]">
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider" style={{ color: accent }}>{sys.for}</span>
+              <span className="text-[13px] md:text-[16px] text-white/20">{sys.title}</span>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
