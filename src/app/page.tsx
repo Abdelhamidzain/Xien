@@ -460,15 +460,15 @@ function ProcessPanel() {
   const step = processSteps[selected];
 
   return (
-    <div className="section-inner flex flex-col justify-start md:justify-center h-full py-4 md:py-6">
-      <div className="mb-3 md:mb-6 flex-shrink-0">
-        <span className="overline block mb-1 md:mb-3">Process</span>
-        <h2 className="heading-lg">From <span style={{ color: accent }}>idea</span><br className="hidden md:block" /> to execution.</h2>
+    <div className="section-inner flex flex-col justify-center h-full">
+      <div className="mb-6">
+        <span className="overline block mb-2">Process</span>
+        <h2 className="heading-lg">From <span style={{ color: accent }}>idea</span> to execution.</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-3 md:gap-8 items-start flex-1 min-h-0">
+      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-4 md:gap-8 items-start">
         {/* Left — step selector */}
-        <div className="flex md:flex-col gap-0.5 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 flex-shrink-0" data-scrollable>
+        <div className="flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0" data-scrollable>
           {processSteps.map((s, i) => (
             <button
               key={s.name}
@@ -486,11 +486,11 @@ function ProcessPanel() {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 />
               )}
-              <span className="text-[11px] md:text-[14px] font-mono"
+              <span className="text-[13px] md:text-[16px] font-mono"
                 style={{ color: i === selected ? accent : "rgba(255,255,255,0.15)" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className={`text-[12px] md:text-[16px] font-bold uppercase tracking-wide ${i === selected ? "text-white" : "text-white/30"}`}>
+              <span className={`text-[13px] md:text-[16px] font-bold uppercase tracking-wide ${i === selected ? "text-white" : "text-white/30"}`}>
                 {s.name}
               </span>
             </button>
@@ -498,36 +498,31 @@ function ProcessPanel() {
         </div>
 
         {/* Right — selected step details */}
-        <div className="overflow-y-auto min-h-0 flex-1 md:flex-initial" data-scrollable>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selected}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="module-card p-4 md:p-8 relative"
-            >
-              {/* Step number + name */}
-              <div className="flex items-baseline gap-3 mb-3 md:mb-4">
-                <span className="text-[1.8rem] md:text-[3rem] font-black leading-none" style={{ color: accent }}>{String(selected + 1).padStart(2, "0")}</span>
-                <span className="text-[14px] md:text-[18px] font-bold uppercase tracking-wide">{step.name}</span>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selected}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="module-card p-5 md:p-8 relative"
+          >
+            <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-2">
+              <div>
+                <h3 className="text-[18px] md:text-[22px] font-black uppercase tracking-wide mb-1">{step.name}</h3>
+                <p className="text-[13px] md:text-[16px] text-white/50">{step.headline}</p>
               </div>
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider px-2 py-1 border border-white/[0.06] rounded text-white/20">Step {String(selected + 1).padStart(2, "0")}</span>
+            </div>
 
-              {/* Headline */}
-              <h3 className="text-[14px] md:text-[20px] font-bold leading-snug mb-3 md:mb-5 text-white/90">{step.headline}</h3>
+            <p className="text-[13px] md:text-[16px] text-white/40 leading-relaxed mt-6">{step.desc}</p>
 
-              {/* Description */}
-              <p className="text-[12px] md:text-[15px] text-white/40 leading-relaxed mb-4 md:mb-6">{step.desc}</p>
-
-              {/* Outcome */}
-              <div className="flex items-center gap-3 pt-3 md:pt-4 border-t border-white/[0.04]">
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: accent }} />
-                <span className="text-[12px] md:text-[15px] font-bold" style={{ color: accent }}>{step.outcome}</span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            {/* Outcome */}
+            <div className="flex items-center gap-6 mt-8 pt-5 border-t border-white/[0.04]">
+              <span className="text-[13px] md:text-[16px] font-mono uppercase tracking-wider" style={{ color: accent }}>{step.outcome}</span>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
