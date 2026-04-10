@@ -46,6 +46,35 @@ function HScrollHint({ children, className = "" }: { children: React.ReactNode; 
   );
 }
 
+function VScrollHint({ scrollRef }: { scrollRef: React.RefObject<HTMLElement | null> }) {
+  const [canScrollDown, setCanScrollDown] = useState(false);
+
+  const check = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollDown(el.scrollHeight > el.clientHeight + 8 && el.scrollTop < el.scrollHeight - el.clientHeight - 8);
+  }, [scrollRef]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    check();
+    el.addEventListener("scroll", check, { passive: true });
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => { el.removeEventListener("scroll", check); ro.disconnect(); };
+  }, [scrollRef, check]);
+
+  return (
+    <div className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none transition-opacity duration-500 ${canScrollDown ? "opacity-100" : "opacity-0"}`}>
+      <div className="h-16 bg-gradient-to-t from-[#0a0a0c] to-transparent" />
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+  );
+}
+
 /* ═══ DATA ═══ */
 
 const experience = [
@@ -666,6 +695,7 @@ export default function Home() {
   const [featuredVideo, setFeaturedVideo] = useState(videos[0]);
   const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollTime = useRef(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const go = useCallback((target: number) => {
     if (target < 0 || target >= TOTAL || target === panel) return;
@@ -848,7 +878,7 @@ export default function Home() {
         className="absolute z-[5] top-0 bottom-[52px] md:bottom-[3px] left-0 md:left-[56px] right-0"
       >
         <AnimatePresence mode="wait" custom={dir}>
-          <motion.div key={panel} custom={dir} variants={variants} initial="enter" animate="center" exit="exit"
+          <motion.div ref={scrollRef} key={panel} custom={dir} variants={variants} initial="enter" animate="center" exit="exit"
             transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }} className="absolute inset-0 overflow-x-hidden overflow-y-auto" data-scrollable>
 
             {/* 01 MANIFESTO */}
@@ -956,6 +986,7 @@ export default function Home() {
             )}
           </motion.div>
         </AnimatePresence>
+        <VScrollHint scrollRef={scrollRef} />
       </div>
     </div>
   );
