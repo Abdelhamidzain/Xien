@@ -16,6 +16,20 @@ export const metadata: Metadata = {
   title: "Abdelhamid Zainhom — Senior Art Director & Motion Designer",
   description:
     "13+ years of visual storytelling. Art direction, motion design, branding systems, and production automation.",
+  openGraph: {
+    title: "Abdelhamid Zainhom — Senior Art Director & Motion Designer",
+    description:
+      "13+ years turning strategic concepts into scalable visual systems — from the first sketch to the final automated delivery.",
+    siteName: "Xien",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abdelhamid Zainhom — Senior Art Director & Motion Designer",
+    description:
+      "13+ years turning strategic concepts into scalable visual systems.",
+  },
 };
 
 export default function RootLayout({
