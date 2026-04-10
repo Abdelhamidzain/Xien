@@ -883,7 +883,7 @@ export default function Home() {
 
             {/* 01 MANIFESTO */}
             {panel === 0 && (
-              <div className="w-full min-h-full flex flex-col md:flex-row">
+              <div className="w-full h-full flex flex-col md:flex-row">
                 {/* Mobile: photo at top */}
                 <div className="md:hidden w-full h-[40%] relative flex items-center justify-center overflow-hidden">
                   <img src="/photo.png" alt="Abdelhamid Zainhom" className="w-full h-full object-cover object-center" />
